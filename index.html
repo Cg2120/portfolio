@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cyrus Gop — Project Portfolio</title>
+  <meta name="description" content="Advanced projects by Cyrus Gop: Martian concrete printing, autonomous robots, cooking manipulators, CubeSat sensing, and modular humanoids.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="kicker">Project Portfolio · Advanced Projects</p>
+    <h1>Cyrus Gop</h1>
+    <p class="role">Mechanical Engineering &amp; Robotics<br>Carnegie Mellon University</p>
+    <p class="meta">
+      <a href="https://www.linkedin.com/in/cyrus-gop-79437a284">LinkedIn</a>
+      <span aria-hidden="true">·</span>
+      Last updated 03/22/26
+    </p>
+  </header>
+
+  <nav class="index" aria-label="Projects">
+    <ol>
+      <li><a href="#concrete">Martian Magnesium Oxide Concrete Printer</a></li>
+      <li><a href="#hotswap">Hotswap Wheeled Cooking Humanoid</a></li>
+      <li><a href="#cubesat">CubeSat Ozone Sensing Platform</a></li>
+      <li><a href="#linkage">Link &amp; Ladle, 5-Bar Cooking Robot</a></li>
+      <li><a href="#cubit">Cubit Modular Robotics Platform (Startup)</a></li>
+      <li><a href="#telos">TELOS-Lite Half-Body Humanoid</a></li>
+      <li><a href="#turtlebot">Self-Driving TurtleBot3</a></li>
+    </ol>
+  </nav>
+
+
+  <main>
+    <article id="concrete">
+      <p class="num">01</p>
+      <h2>Concrete 3D Printer for Martian Magnesium Oxide Structures</h2>
+      <p class="lead">A syringe-extrusion printer and an in-situ magnesium oxide mix, aimed at building habitats from material already on Mars instead of shipping concrete from Earth.</p>
+      <p>Launch mass is the constraint. The project deck frames transport at about $10,000 per kilogram, which makes prefabricated habitat parts a poor fit. Earlier concepts either haul a biopolymer to bind regolith, as in AI Space Factory, or melt sulfur, as in Mars 3Design. This work keeps processing light: magnesium oxide, which is abundant on Mars, mixed with a magnesium acetate solution, a little regolith simulant, and bentonite clay, then printed on a modified desktop gantry.</p>
+      <h3>Printer</h3>
+      <ul>
+        <li>Rebuilt an Ender 3 V2 into a concrete gantry. Removed the filament hot end, kept the power supply, Y belt, screen, and stepper drivers, and carried the tool on 40&nbsp;×&nbsp;20&nbsp;mm V-slot rail.</li>
+        <li>Designed a screw-syringe extruder in Fusion 360. A NEMA 17 turns a 2&nbsp;mm-pitch lead screw into a sealed 60&nbsp;mL syringe plunger. Housings and the plunger are ABS. The steel cart bracket was drilled out and replaced with a printed mount sized for 1–2&nbsp;lb of mix.</li>
+        <li>A flat syringe tip jammed under vertical pressure. A 10&nbsp;mm PLA cone, followed by a 50&nbsp;mm metal pipe of the same diameter, restored flow.</li>
+        <li>Homed with a manual Z offset because the syringe limited travel. Tuned Ultimaker Cura so a 500% flow-compensation factor at 20&nbsp;mm/s laid down about 1&nbsp;mL per 20&nbsp;mm, a layer height that matched the nozzle.</li>
+      </ul>
+      <h3>Mix</h3>
+      <ul>
+        <li>Every mix started at 54% MgO and 36% magnesium acetate solution by weight. MMS-1 Mojave regolith simulant and volcanic bentonite filled the rest. Clay holds water for brucite formation, Mg(OH)<sub>2</sub>, and keeps a fresh layer from collapsing.</li>
+        <li>Four recipes, mixed by pestle and mortar, then printed and cast. Mix B — 3% regolith simulant and 7% bentonite — had the lowest layer deformation against a 7&nbsp;mm programmed height and the highest compressive strength on a 10-ton hydraulic press.</li>
+        <li>Printed Mix B measured about half the strength of Portland cement, with layers that stayed intact on a cylinder where leaner mixes cracked. A phenolphthalein test showed the mix taking up CO<sub>2</sub> as MgCO<sub>3</sub>, so strength can keep rising in a CO<sub>2</sub>-rich atmosphere.</li>
+      </ul>
+      <p class="skills">Fusion 360, Ultimaker Cura, stepper wiring, syringe extrusion, flow and shrinkage calculations, CNC, drill press, bandsaw.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1zdm0OM8fLVKeDZtKSqWjBpcasBXVBdbvVq8l3_jEEC8/edit?usp=sharing">https://docs.google.com/presentation/d/1zdm0OM8fLVKeDZtKSqWjBpcasBXVBdbvVq8l3_jEEC8/edit?usp=sharing</a></p>
+    </article>
+
+    <article id="hotswap">
+      <p class="num">02</p>
+      <h2>Hotswap — Wheeled Humanoid with Interchangeable Cooking Tools</h2>
+      <p class="lead">Two 6-DOF arms on the TELOS-Lite architecture, plus a lifting torso and a latch that swaps a hand for a spatula or a vise grip without fasteners.</p>
+      <p>The review deck treats this as a physical build in progress. Joint modules exist in hardware. Shoulder torque and payload below are design targets, and the deck is clear that measured torque, backlash, and continuous duty are the next tests, not finished ratings.</p>
+      <h3>Actuators, three generations</h3>
+      <ul>
+        <li>First unit: a blue 5010 360&nbsp;KV motor, 64:1 printed gearbox, PETG structure. It showed backlash, housing flex, and little usable torque. A worked example in the deck, at 70% efficiency and 10&nbsp;A, lands near 11.9&nbsp;N·m ideal — a calculation, and still short of a stiff joint. One degree of lost motion at a 0.5&nbsp;m link is about 8.7&nbsp;mm at the tip.</li>
+        <li>Second unit: a hand-wound 36-slot, 40-pole motor in iron-filled PLA, 22&nbsp;AWG. Torque was weak. The plastic rotor ring has no steel return path, so flux leaks. That motor was set aside.</li>
+        <li>Current unit: a commercial drone motor in a large printed housing, with an ODESC v4.2 controller in the back shell and a large output bearing so link loads do not sit on the motor bearings. Magnetic encoders close the position loop. Gear ratios are set per joint. The shoulder is drawn around 30&nbsp;N·m and a 2&nbsp;lb payload. At a horizontal 0.5&nbsp;m reach, that payload alone is about 4.45&nbsp;N·m. The rest of the budget is arm mass, acceleration, and friction.</li>
+      </ul>
+      <h3>Tool change and the body</h3>
+      <ul>
+        <li>Actuator housings, gearboxes, connectors, and latches are modeled in Onshape. A spring latch drops a module without screws. A prong-contact PCB carries power, ground, and communication across the joint. The contacts locate electrically. The latch locates mechanically.</li>
+        <li>The hand has four fingers, three mechanical degrees of freedom each, driven by two encoder-equipped CAN servos per finger. The same latch accepts the hand at 6&nbsp;V or a passive tool, including a vise that holds a utensil handle. Task software picks the tool from the cooking step instead of launching a separate script.</li>
+        <li>An electric lift in the torso changes arm height over the counter. The base has to keep the center of mass inside the support polygon as the torso rises and the arms reach. Fault detection is meant to allow a bad actuator to be pulled and replaced mid-task.</li>
+        <li>Hardware iteration so far has been latch engagement, connector alignment, and tool seating. A listed parts subtotal in the deck is about $891 before computer, cameras, batteries, and salvaged base motors. The next gates are measured joint torque, a calibrated arm, a counted latch cycle, and a low-load utensil exchange.</li>
+      </ul>
+      <p class="skills">Onshape, dual-arm manipulation, BLDC actuators, planetary gearboxes, spring latches, custom PCBs, ODESC, magnetic encoders, CAN, closed-loop position control, robotic hands.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1klAAycaHVp_uLrxPkl38zs1d1xwICx5d/edit?usp=sharing&amp;ouid=108681102365777641217&amp;rtpof=true&amp;sd=true">https://docs.google.com/presentation/d/1klAAycaHVp_uLrxPkl38zs1d1xwICx5d/edit?usp=sharing&amp;ouid=108681102365777641217&amp;rtpof=true&amp;sd=true</a></p>
+    </article>
+    <article id="cubesat">
+      <p class="num">03</p>
+      <h2>CubeSat for Ozone Layer Monitoring</h2>
+      <p class="lead">A CubeSat-class bench platform that measures ozone, tags the reading with position and a photo, and holds attitude with reaction wheels while a long-range radio carries telemetry.</p>
+      <ul>
+        <li>Flight computer is an Arduino-ESP32. Long-range antennas handle a low-power uplink, downlink, and remote commands. Sensing, motor drive, image capture, and radio traffic are coordinated in C++.</li>
+        <li>The ozone sensor sits behind a calibrated analog front end, with filtering, drift compensation, and timestamped logs. GPS supplies position and time. An Arducam frame is stored with the same timestamp as the gas reading and the attitude estimate.</li>
+        <li>Aluminum reaction wheels were cut on a manual mill. Inertia and balance were checked so the spinning discs do not shake the sensor. Wheel momentum follows H&nbsp;=&nbsp;Iω, with I&nbsp;=&nbsp;½mr² for a disc, and torque is τ&nbsp;=&nbsp;Iα. Larger radius buys inertia at the same mass.</li>
+        <li>Attitude comes from a fused accelerometer and gyroscope. A PID loop, u(t)&nbsp;=&nbsp;Kp&nbsp;e&nbsp;+&nbsp;Ki∫e&nbsp;+&nbsp;Kd&nbsp;de/dt, commands L293D drivers. PWM sets direction and duty on the wheel motors. The deck is explicit that wheel speed saturates, and that duty cycle is not a torque constant: voltage, friction, and load all sit in between.</li>
+        <li>The enclosure is a 100&nbsp;×&nbsp;100&nbsp;×&nbsp;100&nbsp;mm printed cube: 2.5&nbsp;mm flat panels, a removable lid, and 6&nbsp;mm corner posts, so each face reprints on its own. Wheel modules sit on perpendicular faces at staggered heights. An open internal deck keeps the sensor face clear of the motors. Power is split so motor noise stays off the analog front end and the radio.</li>
+        <li>The full stack was bench-tested with hardware-in-the-loop runs and disturbance inputs. The slides record the integration and do not claim numerical pointing or sensing scores.</li>
+      </ul>
+      <p class="skills">SolidWorks, Inventor, ESP32, long-range RF, ozone sensing, IMU, GPS, PID, L293D, reaction-wheel machining, Arducam, embedded C/C++, additive manufacturing.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1UmWYK84Zz-xF6s5H38ayYmJHqduzjnA5/edit?usp=sharing&amp;ouid=108681102365777641217&amp;rtpof=true&amp;sd=true">https://docs.google.com/presentation/d/1UmWYK84Zz-xF6s5H38ayYmJHqduzjnA5/edit?usp=sharing&amp;ouid=108681102365777641217&amp;rtpof=true&amp;sd=true</a></p>
+    </article>
+
+    <article id="linkage">
+      <p class="num">04</p>
+      <h2>Link &amp; Ladle — 5-Bar Cooking Robot</h2>
+      <p class="lead">A diamond-shaped planar arm, sized to a frying pan, for stirring, flipping, and dispensing on a real apartment stove.</p>
+      <ul>
+        <li>Modeled the rhombus linkage in SolidWorks around a standard pan, including clearances, singularities, and the reachable workspace so the tool stays out of dead zones.</li>
+        <li>Closed-form inverse kinematics and a Jacobian velocity controller. Trajectories are time-scaled trapezoids and quintics: circles, figure-eights, and straight sweeps.</li>
+        <li>ROS&nbsp;2 on a Raspberry Pi 4 (Ubuntu 22.04) runs kinematics, trajectory generation, step/direction, homing, limits, and live parameters. Two NEMA 17 joints use microstepping drivers with current limits, endstop homing, and soft limits near the heat.</li>
+        <li>The mechanism was checked as a URDF in RViz and Gazebo before anything was powered on the stove. Magnetic quick-change ends hold a whisk, spatula, or ladle.</li>
+        <li>Safety is an E-stop topic, keep-out zones for over-temperature, and a watchdog on command rate.</li>
+        <li>The latest deck shows the arm over an apartment stove. A Raspberry Pi 5 with an AI camera and an AI accelerator NVMe hat runs an onboard ingredient classifier. The motor board sits on a Pi 4B, linked to the Pi 5 by phone tethering. Early runs still need tighter kinematics and microstepping with PID before the motion is smooth. A data summary is still coming.</li>
+      </ul>
+      <p class="skills">ROS&nbsp;2, kinematics, trajectory planning, Python, C++, Raspberry Pi 4 and 5, NEMA 17, SolidWorks, 3D printing, RViz, Gazebo.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1OGI6FG_iQUAO8KlB-KerTrtgaaH9YKT2NTOjHHrD3mU/edit?usp=sharing">https://docs.google.com/presentation/d/1OGI6FG_iQUAO8KlB-KerTrtgaaH9YKT2NTOjHHrD3mU/edit?usp=sharing</a></p>
+    </article>
+
+    <article id="cubit">
+      <p class="num">05</p>
+      <h2>Cubit Modular Robotics Platform (Startup)</h2>
+      <p class="lead">A stealth platform of smart actuators and locking links, plus a language interface that writes the ROS stack for whatever chain you just snapped together. Built with Omar Aldaher.</p>
+      <p>The pitch is the gap between buying a finished arm and building one. A Franka-class arm is on the order of $30,000 and still leaves the task software to the user. Toy kits do not carry a real payload. Cubit is the middle: standard links, a laptop, and ESP32 boards, with the robot describing its own kinematics after each rebuild.</p>
+      <ul>
+        <li>The actuator is a 5010 360&nbsp;KV BLDC, a two-stage planetary gearbox at 6:1 and 6:1 (about 36:1 overall), a hall encoder, and an ESP32 field-oriented control board rated to about 20&nbsp;A. USB-C is there for diagnostics and bootloading. A spring lock is the mechanical mount, so a joint goes on without tools.</li>
+        <li>Links run from 100 to 500&nbsp;mm, with bar connectors drawn in SolidWorks. A 300&nbsp;mm bar in the deck carries an RFID tag so a connection can identify itself. Internal retention geometry sets alignment and load path the same way every time.</li>
+        <li>Joints speak position and velocity and daisy-chain. A hardware abstraction layer discovers whatever is plugged in and exposes one robot model. A depth camera hooks into the same stack for manipulation.</li>
+        <li>A GPT 5.2-mini command line turns a plain-language request into ROS drivers, configs, launch files, and motion scripts. Bring-up checks look for bad configs, swapped motor maps, and dead links on the bus.</li>
+        <li>Lab builds dropped setup from hours of wiring to a mechanical snap plus generated software. The audience in the deck is R&amp;D labs, student teams, and hobbyists first, then home tasks. Production drawings are in work to ASME Y14.5, with draft prints for manual machining.</li>
+      </ul>
+      <p class="skills">Modular mechanisms, BLDC and planetary gearboxes, ESP32, hardware abstraction, ROS&nbsp;2, Claude and GPT 5.2, SolidWorks, GD&amp;T, vision, Git.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1jdApNpwHoiMrADwyLNzDBazGfvmrFLRIFhGNnLSYM4Y/edit?usp=sharing">https://docs.google.com/presentation/d/1jdApNpwHoiMrADwyLNzDBazGfvmrFLRIFhGNnLSYM4Y/edit?usp=sharing</a></p>
+    </article>
+
+    <article id="telos">
+      <p class="num">06</p>
+      <h2>TELOS-Lite Half-Body Humanoid</h2>
+      <p class="lead">A 6-DOF upper body with quasi-direct-drive actuators, a cable-driven gripper, and a camera on the hand. Most of the robot is printed.</p>
+      <ul>
+        <li>The torso, shoulders, actuator housings, mounts, and gripper interfaces are one SolidWorks model, packaged to print. A shoulder V-slot mount in PETG was checked in ANSYS before it was fabricated.</li>
+        <li>The actuator is a nearly fully printed BLDC quasi-direct drive. Bearings and fasteners are the only off-the-shelf mechanical parts. A custom multi-stage planetary gearbox was iterated for a low-power, high-torque output, with attention to ratio, tolerance, friction, and gear noise.</li>
+        <li>The hand is a tensioned tentacle. Logarithmic finger shapes and TPU–PETG hybrids were compared for cylinders and spheres.</li>
+        <li>ESP32 nodes and a Raspberry Pi 5 share the actuators over CAN and PWM, bridged by serial. The hand camera closes a visual servo for pickup. Inverse kinematics sits on top of position, velocity, and torque control for all six degrees of freedom.</li>
+        <li>Bench and integrated tests: about 0.1&nbsp;mm actuator repeatability, about 70% success on visual-servo pickups, and a 2&nbsp;lb payload through the workspace. Later passes smoothed the gearbox, tightened the package, and tuned gripper compliance.</li>
+      </ul>
+      <p class="skills">SolidWorks, ANSYS, quasi-direct-drive BLDC, planetary gearboxes, PETG, TPU, cable grippers, ESP32, Raspberry Pi 5, CAN, PWM, visual servoing.</p>
+    </article>
+
+    <article id="turtlebot">
+      <p class="num">07</p>
+      <h2>Self-Driving TurtleBot3</h2>
+      <p class="lead">A TurtleBot3, programmed as a “Segway mobot,” that drives a maze on its own in ROS&nbsp;2 from lidar, IMU, and wheel odometry.</p>
+      <ul>
+        <li>Ran the robot headless on Ubuntu 22.04. A Raspberry Pi 4 reached a Wi-Fi router through USB tethering to an iPhone, which was enough for remote control without a dedicated network stack.</li>
+        <li>Wrote publishers and subscribers in C++ and Python 3 for the IMU, camera, lidar, and wheel encoders.</li>
+        <li>Navigated a 10&nbsp;ft&nbsp;×&nbsp;10&nbsp;ft plastic maze with SLAM and ICP scan merging. Forward and inverse kinematics in RViz and Gazebo, plus a complementary filter, cut motor drift by about 80%.</li>
+        <li>The filter, written up with Jason Malik, trusts the IMU over a short window and wheel odometry over a long one. Alpha is the bias between those two. Gyro integration catches fast yaw and then wanders. Odometry stays stable until the wheels slip. Fusing them with a tuned bias produces a yaw estimate that does not walk off during a repeated path.</li>
+        <li>Alpha was tuned by driving WASD in a taped square: zigzags at one speed, return to the start, then compare fused yaw with raw odometry and raw IMU. The same heading check used a marked X on the floor lined up with a wheel.</li>
+      </ul>
+      <p class="skills">ROS&nbsp;2, C++, Python 3, SLAM, ICP, complementary filtering, RViz, Gazebo, Raspberry Pi 4, Ubuntu 22.04, lidar, IMU.</p>
+      <p class="doc"><a href="https://docs.google.com/presentation/d/1-M-764r8cfCWe_diXHcTuYZphpRetYmejlpK4OlFamo/edit?usp=drivesdk">https://docs.google.com/presentation/d/1-M-764r8cfCWe_diXHcTuYZphpRetYmejlpK4OlFamo/edit?usp=drivesdk</a></p>
+    </article>
+
+    </main>
+
+  <footer>
+    <p>Cyrus Gop · Advanced projects · Last updated 03/22/26</p>
+  </footer>
+</body>
+</html>

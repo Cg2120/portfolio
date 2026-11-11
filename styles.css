@@ -1,0 +1,187 @@
+:root {
+  color-scheme: light;
+  --bg: #fff;
+  --fg: #000;
+  --rule: #000;
+  --measure: 40rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  background: #000;
+  color: #fff;
+}
+
+a:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.site-header,
+.index,
+main,
+footer {
+  width: min(var(--measure), calc(100% - 2.5rem));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-header {
+  padding: 3.5rem 0 1.25rem;
+}
+
+.kicker,
+.num,
+.skills {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.kicker,
+.meta,
+.num {
+  margin: 0;
+}
+
+h1 {
+  margin: 0.35rem 0 0.4rem;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.role {
+  margin: 0;
+  text-wrap: balance;
+}
+
+.meta {
+  margin-top: 1rem;
+}
+
+.index {
+  padding: 1.25rem 0 0.25rem;
+}
+
+.index ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: project;
+}
+
+.index li {
+  counter-increment: project;
+  border-top: 1px solid var(--rule);
+}
+
+.index li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.index a {
+  display: flex;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  text-decoration: none;
+}
+
+.index a::before {
+  content: counter(project, decimal-leading-zero);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+article {
+  padding: 2.75rem 0 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 1.25rem;
+}
+
+.num {
+  margin-bottom: 0.4rem;
+}
+
+h2 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h3 {
+  margin: 1.4rem 0 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.lead {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+p,
+ul {
+  margin: 0.75rem 0;
+}
+
+ul {
+  padding-left: 1.15rem;
+}
+
+li + li {
+  margin-top: 0.45rem;
+}
+
+.skills {
+  margin-top: 1.4rem;
+  line-height: 1.45;
+}
+
+.doc {
+  margin: 0.8rem 0 2rem;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  padding: 1.5rem 0 3rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+
+  .site-header {
+    padding-top: 2.25rem;
+  }
+
+  .index a {
+    align-items: baseline;
+  }
+}
